@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tama Library", "Tama Library\Tama Library.csproj", "{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Rlid16|Any CPU = Rlid16|Any CPU
+		Rlid19|Any CPU = Rlid19|Any CPU
+		Rlid4|Any CPU = Rlid4|Any CPU
+		Rlid5|Any CPU = Rlid5|Any CPU
+		Rlid6|Any CPU = Rlid6|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}.Rlid16|Any CPU.ActiveCfg = Rlid16|Any CPU
+		{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}.Rlid16|Any CPU.Build.0 = Rlid16|Any CPU
+		{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}.Rlid19|Any CPU.ActiveCfg = Rlid19|Any CPU
+		{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}.Rlid19|Any CPU.Build.0 = Rlid19|Any CPU
+		{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}.Rlid4|Any CPU.ActiveCfg = Rlid4|Any CPU
+		{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}.Rlid4|Any CPU.Build.0 = Rlid4|Any CPU
+		{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}.Rlid5|Any CPU.ActiveCfg = Rlid5|Any CPU
+		{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}.Rlid5|Any CPU.Build.0 = Rlid5|Any CPU
+		{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}.Rlid6|Any CPU.ActiveCfg = Rlid6|Any CPU
+		{39D8FC9A-D060-4CDE-A579-EADBD8D34E80}.Rlid6|Any CPU.Build.0 = Rlid6|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
