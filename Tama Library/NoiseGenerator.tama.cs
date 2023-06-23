@@ -1,6 +1,6 @@
 ﻿// Copyright © 2014 Triamec Motion AG
 
-using Triamec.Tama.Rlid4;
+using Triamec.Tama.Rlid19;
 using Triamec.Tama.Vmid5;
 using Triamec.TriaLink;
 using Triamec.Tam.Samples;
@@ -68,7 +68,7 @@ static class NoiseGenerator {
 
 			// multiply signal with the desired RMS value and write the noise value to the
 			// tama variable
-			Register.Tama.Variables.GenPurposeVar24 = result * Register.Tama.Variables.GenPurposeVar0;
+			Register.Application.Variables.Floats[24] = result * Register.Application.Variables.Floats[0];
 		}
 	}
 }
