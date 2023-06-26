@@ -9,22 +9,16 @@ namespace Triamec.Tam.Modules {
 		/// <summary>Idle</summary>
 		public const int Idle = 0;
 
-		/// <summary>CheckForHomingAction</summary>
-		public const int CheckForHomingAction = 1;
+        /// <summary>TamaProgramRequest</summary>
+        public const int Preprocessing = 1;
 
-		/// <summary>WaitIndexCleared</summary>
-		public const int WaitIndexCleared = 2;
+        /// <summary>TamaProgramRunning</summary>
+        public const int Homing = 2;
 
 		/// <summary>SearchIndex</summary>
-		public const int SearchIndex = 3;
+		public const int Postprocessing = 3;
 
-		/// <summary>SetPosition</summary>
-		public const int SetPosition = 4;
-
-		/// <summary>WaitPositionSet</summary>
-		public const int WaitPositionSet = 5;
-
-		/// <summary>WaitMoveDone</summary>
-		public const int WaitMoveDone = 6;
-	}
+        /// <summary>Done</summary>
+        public const int Done = 4;
+    }
 }

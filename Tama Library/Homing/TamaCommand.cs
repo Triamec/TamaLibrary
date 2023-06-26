@@ -10,7 +10,7 @@ namespace Triamec.Tam.Modules {
 		public const int NoCommand = 0;
 
 		/// <summary>Start homing</summary>
-		public const int StartHoming = 1;
+		public const int Start = 1;
 
 		/// <summary>Stop</summary>
 		public const int Stop = 2;
