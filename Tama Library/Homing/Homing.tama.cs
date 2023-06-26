@@ -45,7 +45,11 @@ public static class
 
 			#region state idle -> wait for command to execute
 			case HomingState.Idle:
-				switch (Register.Axes_0.Commands.Homing.Command) {
+
+                // keep TamaState idle if HomingState is idle
+                Register.Application.TamaControl.AsynchronousMainState = TamaState.Idle;
+
+                switch (Register.Axes_0.Commands.Homing.Command) {
 
 					case HomingCommand.Start:
 
@@ -60,7 +64,9 @@ public static class
 
                 // reset homing command for handshake and transition to TamaProgramRunning
                 Register.Axes_0.Commands.Homing.Command = HomingCommand.None;
-				break;
+                // make sure the TamaState is idle before letting it run
+                Register.Application.TamaControl.AsynchronousMainState = TamaState.Idle;
+                break;
 
 			case HomingState.TamaProgramRunning:
 
@@ -103,29 +109,35 @@ public static class
                         Register.Application.TamaControl.AsynchronousMainState = TamaState.Done;
                         break;
 
-					case TamaState.Done:
+                    case TamaState.Done:
 
-                        // cleanup
-                        Register.Application.Variables.Booleans[1] = false;
-                        Register.Application.Variables.Booleans[1] = false;
-						break;
+                        // jump to preprocessing to execute homing
+                        Register.Application.TamaControl.AsynchronousMainState = TamaState.Preprocessing;
+                        break;
                 }
+			    break;
 
-			break;
+            case HomingState.HomingDone:
 
-            //case HomingState.HomingDone:
+                switch (Register.Axes_0.Commands.Homing.Command) { 
 
-            //	switch (Register.Application.TamaControl.AsynchronousMainState) {
+                    case HomingCommand.Start: 
 
-            //		case TamaState.Done:
+                        // invalidate to go back to HomingState idle and the start
+                        Register.Axes_0.Commands.Homing.Command = HomingCommand.Invalidate;
+                        Register.Axes_0.Commands.Homing.Command = HomingCommand.Start;
+                        break;
 
-            //			// cleanup and reset
-            //			Register.Application.Variables.Booleans[0] = false;
-            //			Register.Application.Variables.Booleans[1] = false;
-            //			// Register.Axes_0.Commands.Homing.Command = HomingCommand.None;
-            //			break;
-            //	}		
-            //	break;
+                }
+            
+
+                switch (Register.Application.TamaControl.AsynchronousMainState) {
+
+                    case TamaState.Done:
+                        //wait for commands
+                        break;
+                }
+                break;
 
 
         }
