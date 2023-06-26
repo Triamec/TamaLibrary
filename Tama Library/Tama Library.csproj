@@ -44,13 +44,12 @@
   <ItemGroup>
     <Compile Include="BaseClassSample.tama.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Homing\StandaloneHomingAndEndswitches.tama.cs" />
     <Compile Include="NoiseGenerator.tama.cs" />
     <Compile Include="Homing\Homing.tama.cs" />
-    <Compile Include="Homing\StandaloneHomingAndEndswitches.tama.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Homing\TamaCommand.cs" />
     <Compile Include="Homing\TamaState.cs" />
-    <Compile Include="PulseGeneratorTiob.tama.cs" />
     <Compile Include="PulseGeneratorTsd.tama.cs" />
     <Compile Include="Timers.tama.cs" />
     <Compile Include="Timers\AsynchronousTimer.cs" />
