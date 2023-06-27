@@ -1,5 +1,5 @@
 $Id: readme.txt 39154 2021-10-22 15:13:19Z ab $
-Copyright © 2011 Triamec Motion AG
+Copyright © 2023 Triamec Motion AG
 
 Caution: you may harm your hardware when executing sample applications 
 without adjusting configuration values to your hardware environment.
