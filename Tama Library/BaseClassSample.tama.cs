@@ -2,7 +2,8 @@
 
 using Triamec.TriaLink;
 using Triamec.Tama.Vmid5;
-using Triamec.Tama.Rlid4;
+//using Triamec.Tama.Rlid4;
+using Triamec.Tama.Rlid19;
 
 /* Tama Program Variation Sample
  * -----------------------------
@@ -43,22 +44,21 @@ class BaseTest {
 	public void IsochronousPart() {
 
 		// *** Here goes all the functionality *** 
+		Register.Application.Variables.Integers[0] = _myConst;
+        Register.Application.Variables.Integers[1] = BaseConst;
+        Register.Application.Variables.Integers[2] = _baseField;
 
-		Register.Tama.Variables.GenPurposeIntVar0 = _myConst;
-		Register.Tama.Variables.GenPurposeIntVar1 = BaseConst;
-		Register.Tama.Variables.GenPurposeIntVar2 = _baseField;
-
-	}
+    }
 }
 
 [Tama]
 public static class BaseTest1 {
 	const int MyConst = 6;
 	static readonly BaseTest BaseTest = new BaseTest(MyConst);
+
     #region isochronous Tama main application
     [TamaTask(Task.IsochronousMain)]
     public static void IsochronousTamaMain() => BaseTest.IsochronousPart();
-
     #endregion isochronous Tama Main application
 }
 
@@ -66,6 +66,9 @@ public static class BaseTest1 {
 public static class BaseTest2 {
 	const int MyConst = 5;
 	static readonly BaseTest BaseTest = new BaseTest(MyConst);
+
+    #region isochronous Tama main application
     [TamaTask(Task.IsochronousMain)]
     public static void IsochronousTamaMain() => BaseTest.IsochronousPart();
+    #endregion isochronous Tama Main application
 }
