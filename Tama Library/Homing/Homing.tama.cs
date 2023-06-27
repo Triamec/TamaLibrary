@@ -2,15 +2,27 @@
 
 /* Overview
  * --------
- * 
- * 
- * 
+ * This file shows an implementation of a homing procedure with a TamaProgram.
+ * The TamaProgram is implemented according to the state machine described in AN141 
+ * (https://www.triamec.com/en/documents.html?file=files/medien/documents/AppNotes/AN141_HomingProceduresAndSetup_EP003.pdf&cid=3411)
+ * Within this TamaProgram, the standard homing routine implemented on the firmware is called. You can replace it with your own homing routine if necessary.
+ * In order to verify that the homing has been truly executed by the TamaProgram, the Booleans in Application/Variables/Booleans/ are toggled.
  * This file can be used as a basis for custom extensions.
  * 
+ * How to run this program:
+ * 1. Build it
+ * 2. Open TAM System explorer
+ * 3. In the topology, navigate to your drives 'Tama Manager'
+ * 4. Right-click the 'Tama Manager' and Select 'Load Tama assembly...'
+ * 5. Navigate to and load the *.tama file (usually in the /bin of the current project)
+ * 6. In the topology, right-click on the 'Tama Manager' and select 'Enable asynchronous Tama VM'
+ * 7. In the topology, change Axes[0]/Parameters/Homing/Method to 'TamaProgram'
+ * 8. Start the homing (Axis Module's 'Home' Button, Axes[0]/Commands/Homing/Command -> 'Start', API etc.)
+ * 9. Check the state of Application/Variables/Booleans/ to make sure homing is executed via TamaProgram
  * 
  * Shortcomings
  * ------------
- *
+ * - This program only shows the skeleton for your custom homing state machine but no custom homing routine
  * 
  */
 
