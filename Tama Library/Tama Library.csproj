@@ -47,7 +47,6 @@
     <Compile Include="NoiseGenerator.tama.cs" />
     <Compile Include="Homing\Homing.tama.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Homing\TamaCommand.cs" />
     <Compile Include="Homing\TamaState.cs" />
     <Compile Include="PulseGeneratorTsd.tama.cs" />
     <Compile Include="Timers.tama.cs" />
