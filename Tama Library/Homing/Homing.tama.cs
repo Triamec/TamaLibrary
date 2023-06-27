@@ -14,15 +14,10 @@
  * 
  */
 
-using Triamec.TriaLink;
+//using Triamec.TriaLink;
 using Triamec.Tam.Modules;
 using Triamec.Tama.Vmid5;
 using Triamec.Tama.Rlid19;
-
-#region Fields
-
-
-#endregion Fields
 
 /// <summary>
 /// Tama program for the
@@ -32,7 +27,6 @@ using Triamec.Tama.Rlid19;
 public static class
  Homing19 {
 
-
 	#region Asynchronous Tama main application
 	/// <summary>
 	/// The cyclic task.
@@ -40,10 +34,10 @@ public static class
 	[TamaTask(Task.AsynchronousMain)]
 	public static void Homer() {
 
-		#region State machine
+		#region Homing state machine
 		switch (Register.Axes_0.Signals.Homing.State) {
 
-			#region state idle -> wait for command to execute
+			#region state Idle -> wait for homing command
 			case HomingState.Idle:
 
                 // keep TamaState idle if HomingState is idle
@@ -58,17 +52,18 @@ public static class
 						break;
 				}
 				break;
-			#endregion state idle -> wait for command to execute
+            #endregion state idle -> wait for homing command
 
-			case HomingState.TamaProgramRequested:
+            #region state TamaProgramRequested -> handshake to verify homing program, switch to TamaProgramRunning
+            case HomingState.TamaProgramRequested:
 
                 // reset homing command for handshake and transition to TamaProgramRunning
                 Register.Axes_0.Commands.Homing.Command = HomingCommand.None;
-                // make sure the TamaState is idle before letting it run
-                Register.Application.TamaControl.AsynchronousMainState = TamaState.Idle;
                 break;
+            #endregion state TamaProgramRequested -> handshake to verify homing program, switch to TamaProgramRunning
 
-			case HomingState.TamaProgramRunning:
+            #region Tama state machine
+            case HomingState.TamaProgramRunning:
 
 				switch(Register.Application.TamaControl.AsynchronousMainState) {
 
@@ -83,7 +78,11 @@ public static class
 
 						// execute preprocessing
 						//...
+
+                        // indicate preprocessing start with booleans
 						Register.Application.Variables.Booleans[0] = true;
+                        Register.Application.Variables.Booleans[1] = false;
+
 
                         // start actual homing procedure
                         Register.Application.TamaControl.AsynchronousMainState = TamaState.Homing;
@@ -102,6 +101,8 @@ public static class
 
                         // execute postprocessing
                         //...
+
+                        // indicate postprocessing start with boolean
                         Register.Application.Variables.Booleans[1] = true;
 
                         // set homing to done
@@ -116,8 +117,13 @@ public static class
                         break;
                 }
 			    break;
+            #endregion Tama state machine
 
+            #region state HomingDone -> wait for new homing command
             case HomingState.HomingDone:
+
+                // indicate end of TamaHoming with boolean
+                Register.Application.Variables.Booleans[0] = false;
 
                 switch (Register.Axes_0.Commands.Homing.Command) { 
 
@@ -129,7 +135,6 @@ public static class
                         break;
 
                 }
-            
 
                 switch (Register.Application.TamaControl.AsynchronousMainState) {
 
@@ -138,11 +143,10 @@ public static class
                         break;
                 }
                 break;
-
-
+            #endregion state HomingDone -> wait for new homing command
         }
 
-        #endregion State machine
+        #endregion Homing state machine
     }
     #endregion Asynchronous Tama main application
 }
