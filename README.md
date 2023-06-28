@@ -1,5 +1,6 @@
 # TamaLibrary
 Library examples of Tama programms
+
 Copyright © 2023 Triamec Motion AG
 
 Caution: you may harm your hardware when executing sample applications 
