@@ -14,9 +14,10 @@ using Triamec.Tam.Samples;
  * 
  * The sample code statically creates a timer for each task and then listens on the main command register for the
  * start signal.
- * When started, the main state is set to 0. After the duration specified in general purpose int or float variables 0 or
- * 1, respectively, the main state is reset to 1.
- * 
+ * When started, the main state is set to 0. After the duration specified in Application.Variables.Integers[] or Application.Variables.Floats[]
+ * [0] or [1], respectively, the main state is reset to 1.
+ * Application.TamaControl.IsochronousMainCommand = 1 and Application.TamaControl.AsynchronousMainCommand = 1 reads the integer value and uses it as tick duration,
+ * Application.TamaControl.IsochronousMainCommand = 2 and Application.TamaControl.AsynchronousMainCommand = 2 reads the float value and uses it as duration in seconds
  */
 
 [Tama]
