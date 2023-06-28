@@ -56,9 +56,6 @@
     <Compile Include="Timers\Timestamp.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Homing\AxisTamaDrive.odg" />
   </ItemGroup>
   <ItemGroup>
