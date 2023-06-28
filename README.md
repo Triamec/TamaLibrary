@@ -25,9 +25,8 @@ Note: Allow unsafe code is enabled in this project. However, you should not typi
 Hardware requirements
 ---------------------
 
-- a Tria-Link PCI adapter (TL100 or TLC201) mounted to your PC,
-- a servo-drive connected to the Tria-Link
-- power supply for the servo-drive logic and motor power.
+- *Triamec* servo drive with logic supply, connected to your PC
+- For the homing example: Drive power supply, motor, encoder and a stable position controller
 
 
 What the programs do
@@ -47,9 +46,6 @@ What the programs do
 
 - PulseGeneratorTsd: 
       Generate periodic pulses at TSD Ax0..Ax1 DigOutputs 1..2.
-
-- PulseGeneratorTsd: 
-      Generate periodic pulse pattern at TSD Ax0..Ax1 DigOutputs 1..2.
       
 - NoiseGenerator:
 	  Generates a normal distributed random signal with a configurable RMS-value.
@@ -73,14 +69,7 @@ The "TamaTask" parameter specifies the type of task with the following propertie
 [TamaTask(Task.IsochronousMain)]  : Task executed every 100us
                                     -> useful for hard realtime operations (e.g. kinematics)
                                     -> caution: very limited computing resources
-[TamaTask(Task.Axis1Coupling)]    : Task executed every 100us (1 axis system)
-                                    -> axis 1 coupling calculation before entering the path interpolation
-[TamaTask(Task.Axis1Init)]        : Task executed once when setting the path planner to synchronous motion
-                                    -> some preparing functions before entering synchronous motion of axis 1
-[TamaTask(Task.Axis2Coupling)]    : Task executed every 200us (2 axis systems)
-                                    -> axis 2 coupling calculation before entering the path interpolation
-[TamaTask(Task.Axis2Init)]        : Task executed once when setting the path planner to synchronous motion
-                                    -> some preparing functions before entering synchronous motion of axis 2
+
 The static class constructor - if defined - will be executed after downloading the program.
 
 Static variables defined with "static ..." are persistent (e.g. static int counter = 0).
@@ -106,5 +95,10 @@ References
   window.
 - Enquire the TAM System Explorer Quick Start Guide on downloading and activating Tama programs.
 - The TAM API Developer Manual introduces the APIs allowing to download and activate Tama assemblies programmatically.
+
+Manuals: https://www.triamec.com/en/documents.html
+
 - The Gear Up! sample application demonstrates another Tama program used for electronic gearing.
+
+Gear Up! example: https://github.com/Triamec/GearUp
 
