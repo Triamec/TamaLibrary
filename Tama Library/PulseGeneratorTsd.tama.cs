@@ -29,6 +29,8 @@
  * Notes:
  * While the digital outputs which are not configured to be pulsed are left untouched, the program must have exclusive
  * access to the outputs while pulsing. Otherwise, the state of other digital outputs is undefined.
+ * 
+ * A change of the input parameters becomes active after the IsochronousMainCommand is toggled. 
  */
 
 using System.Diagnostics.CodeAnalysis;
