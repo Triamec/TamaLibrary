@@ -1,6 +1,6 @@
 ﻿// Copyright © 2008 Triamec Motion AG
 
-using Triamec.Tama.Rlid4;
+using Triamec.Tama.Rlid19;
 using Triamec.Tama.Vmid5;
 using Triamec.Tam.Samples;
 
@@ -21,28 +21,28 @@ using Triamec.Tam.Samples;
 
 [Tama]
 public static class TimerSamples {
-	static readonly IsochronousTimer Isotimer = new IsochronousTimer(Register.General.Parameters.CycleTimePathPlanner);
+	static readonly IsochronousTimer Isotimer = new IsochronousTimer(Register.General.Signals.Internals.CycleTimePathPlanner);
 	static readonly AsynchronousTimer Asytimer = new AsynchronousTimer();
 
 	[TamaTask(Task.IsochronousMain)]
 	public static void Iso() {
-		switch (Register.Tama.IsochronousMainCommand) {
+		switch (Register.Application.TamaControl.IsochronousMainCommand) {
 			case 1:
-				Isotimer.Start(Register.Tama.Variables.GenPurposeIntVar0);
-				Register.Tama.IsochronousMainState = 0;
-				Register.Tama.IsochronousMainCommand = 3;
+				Isotimer.Start(Register.Application.Variables.Integers[0]);
+				Register.Application.TamaControl.IsochronousMainState = 0;
+				Register.Application.TamaControl.IsochronousMainCommand = 3;
 				break;
 
 			case 2:
-				Isotimer.Start(Register.Tama.Variables.GenPurposeVar0);
-				Register.Tama.IsochronousMainState = 0;
-				Register.Tama.IsochronousMainCommand = 3;
+				Isotimer.Start(Register.Application.Variables.Floats[0]);
+				Register.Application.TamaControl.IsochronousMainState = 0;
+				Register.Application.TamaControl.IsochronousMainCommand = 3;
 				break;
 
 			case 3:
 				if (Isotimer.Tick()) {
-					Register.Tama.IsochronousMainState = 1;
-					Register.Tama.IsochronousMainCommand = 0;
+					Register.Application.TamaControl.IsochronousMainState = 1;
+					Register.Application.TamaControl.IsochronousMainCommand = 0;
 				}
 				break;
 		}
@@ -50,26 +50,26 @@ public static class TimerSamples {
 
 	[TamaTask(Task.AsynchronousMain)]
 	public static void Asy() {
-		switch (Register.Tama.AsynchronousMainCommand) {
+		switch (Register.Application.TamaControl.AsynchronousMainCommand) {
 			case 0:
 				break;
 
 			case 1:
-				Asytimer.Start(Register.Tama.Variables.GenPurposeIntVar1, Register.General.Signals.TriaLinkTimestamp);
-				Register.Tama.AsynchronousMainState = 0;
-				Register.Tama.AsynchronousMainCommand = 3;
+				Asytimer.Start(Register.Application.Variables.Integers[1], Register.General.Signals.TriaLinkTimestamp);
+				Register.Application.TamaControl.AsynchronousMainState = 0;
+				Register.Application.TamaControl.AsynchronousMainCommand = 3;
 				break;
 
 			case 2:
-				Asytimer.Start(Register.Tama.Variables.GenPurposeVar1, Register.General.Signals.TriaLinkTimestamp);
-				Register.Tama.AsynchronousMainState = 0;
-				Register.Tama.AsynchronousMainCommand = 3;
+				Asytimer.Start(Register.Application.Variables.Floats[1], Register.General.Signals.TriaLinkTimestamp);
+				Register.Application.TamaControl.AsynchronousMainState = 0;
+				Register.Application.TamaControl.AsynchronousMainCommand = 3;
 				break;
 
 			case 3:
 				if (Asytimer.Elapsed(Register.General.Signals.TriaLinkTimestamp)) {
-					Register.Tama.AsynchronousMainState = 1;
-					Register.Tama.AsynchronousMainCommand = 0;
+					Register.Application.TamaControl.AsynchronousMainState = 1;
+					Register.Application.TamaControl.AsynchronousMainCommand = 0;
 				}
 				break;
 		}
