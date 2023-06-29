@@ -2,7 +2,7 @@
 
  [![TAM - Tama](https://img.shields.io/static/v1?label=TAM&message=Tama&color=b51839)](https://www.triamec.com/tam-tama.html)
 
-Library examples of Tama programms
+Library examples of Tama programs
 
 Caution: you may harm your hardware when executing sample applications 
 without adjusting configuration values to your hardware environment.
