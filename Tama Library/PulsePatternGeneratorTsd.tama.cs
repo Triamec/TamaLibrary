@@ -39,6 +39,7 @@ using Triamec.Tama.Vmid5;
 /// Tama program for the TSD drive to generate pulse patterns on several outputs.
 /// </summary>
 [Tama]
+#pragma warning disable CA1812 // Avoid uninstantiated internal classes
 static class PulsePatternGeneratorTsd {
 	#region Constants
 	/// <summary>

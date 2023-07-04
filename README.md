@@ -1,7 +1,8 @@
 # TamaLibrary
-Library examples of Tama programms
 
-Copyright © 2023 Triamec Motion AG
+ [![TAM - Tama](https://img.shields.io/static/v1?label=TAM&message=Tama&color=b51839)](https://www.triamec.com/tam-tama.html)
+
+Library examples of Tama programs
 
 Caution: you may harm your hardware when executing sample applications 
 without adjusting configuration values to your hardware environment.
@@ -62,12 +63,13 @@ Programming Primer
 The task entry points are defined by the keyword "TamaTask" and are immediately followed by the desired function.
 The "TamaTask" parameter specifies the type of task with the following properties:
 
-[TamaTask(Task.AsynchronousMain)] : Task executed as fast as possible
-                                    -> useful for complex state machines
-                                    -> and time uncritical operations
-[TamaTask(Task.IsochronousMain)]  : Task executed every 100us
-                                    -> useful for hard realtime operations (e.g. kinematics)
-                                    -> caution: very limited computing resources
+`[TamaTask(Task.AsynchronousMain)]` : Task executed as fast as possible
+- useful for complex state machines
+- and time uncritical operations
+
+`[TamaTask(Task.IsochronousMain)]` : Task executed every 100μs
+- useful for hard realtime operations (e.g. kinematics)
+- limited computing resources
 
 The static class constructor - if defined - will be executed after downloading the program.
 

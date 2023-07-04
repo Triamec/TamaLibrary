@@ -3,8 +3,8 @@
 /* Overview
  * --------
  * This file shows an implementation of a homing procedure with a TamaProgram.
- * The TamaProgram is implemented according to the state machine described in AN141 
- * (https://www.triamec.com/en/documents.html?file=files/medien/documents/AppNotes/AN141_HomingProceduresAndSetup_EP003.pdf&cid=3411)
+ * The TamaProgram is implemented according to the state machine described in AN141 Homing Procedures and Setup
+ * (https://www.triamec.com/en/documents.html)
  * Within this TamaProgram, the standard homing routine implemented on the firmware is called. You can replace it with your own homing routine if necessary.
  * In order to verify that the homing has been truly executed by the TamaProgram, the Booleans in Application/Variables/Booleans/ are toggled.
  * This file can be used as a basis for custom extensions.
