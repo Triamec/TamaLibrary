@@ -26,10 +26,9 @@
  * 
  */
 
-//using Triamec.TriaLink;
-using Triamec.Tam.Modules;
 using Triamec.Tama.Vmid5;
 using Triamec.Tama.Rlid19;
+using TamaState = Triamec.Tam.Modules.TamaState;
 
 /// <summary>
 /// Tama program for the
