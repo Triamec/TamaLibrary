@@ -1,9 +1,9 @@
 ﻿// Copyright © 2014 Triamec Motion AG
 
+using Triamec.Tam.Registers;
+using Triamec.Tam.Samples;
 using Triamec.Tama.Rlid19;
 using Triamec.Tama.Vmid5;
-using Triamec.TriaLink;
-using Triamec.Tam.Samples;
 
 namespace Triamec.Tam.Samples {
 	/// <summary>
